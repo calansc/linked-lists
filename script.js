@@ -49,12 +49,16 @@ class LinkedList {
     return this.head;
   }
   tail() {
-    //returns last node of list
-    let current;
-    while (current.next) {
-      current = current.next;
+    // returns last node of list
+    if (this.head == null) {
+      return null;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      return current;
     }
-    return current;
   }
   at(index) {
     //returns node at given index
@@ -79,4 +83,4 @@ test.prepend("test2");
 console.log(test); // test2 -> test1
 console.log(test.size);
 console.log(test.head);
-console.log(test.tail);
+console.log(test.tail());
