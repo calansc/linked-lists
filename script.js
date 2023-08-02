@@ -142,6 +142,18 @@ class LinkedList {
   }
   removeAt(index) {
     //remove node at index
+    let current = this.head;
+    let prev;
+    if (index == 0) {
+      this.head = current.next;
+    } else {
+      for (let i = 1; i < index + 1; i++) {
+        prev = current;
+        current = current.next;
+      }
+      prev.next = current.next;
+    }
+    this.size--;
   }
 }
 let test = new LinkedList();
@@ -166,4 +178,6 @@ console.log(test.toString());
 test.insertAt("test5", 0);
 console.log(test);
 test.insertAt("test6", 3);
+console.log(test);
+test.removeAt(2);
 console.log(test);
