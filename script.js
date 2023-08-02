@@ -111,13 +111,37 @@ class LinkedList {
     // format: (value) -> (value) -> null
     let string = "";
     let current = this.head;
-    string += "(" + current.value + ") ->";
+    string += "(" + current.value + ") -> ";
     while (current.next) {
       current = current.next;
       string += "(" + current.value + ") -> ";
     }
     string += "null";
     return string;
+  }
+  insertAt(value, index) {
+    //insert new node with value at index
+    let node = new Node(value);
+    if (index == 0 && this.head == null) {
+      this.head = node;
+      this.size++;
+    } else if (index == 0) {
+      this.prepend(value);
+    } else {
+      let current = this.head;
+      let prev;
+      for (let i = 1; i < index + 1; i++) {
+        prev = current;
+        current = current.next;
+        //try / except for to large of index?
+      }
+      prev.next = node;
+      prev.next.next = current;
+      this.size++;
+    }
+  }
+  removeAt(index) {
+    //remove node at index
   }
 }
 let test = new LinkedList();
@@ -139,3 +163,7 @@ console.log("test4 at index:" + test.find("test4")); //2
 console.log("test1 at index:" + test.find("test1")); //null
 console.log("test3 at index:" + test.find("test3")); //0
 console.log(test.toString());
+test.insertAt("test5", 0);
+console.log(test);
+test.insertAt("test6", 3);
+console.log(test);
