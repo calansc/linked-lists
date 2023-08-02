@@ -77,8 +77,7 @@ class LinkedList {
       current = current.next;
     }
     prev.next = null;
-    // current.value = null;
-    // need to set previous next to null
+    // current.value = null; // what happens to 'lost' node
     this.size--;
   }
   contains(value) {
@@ -95,10 +94,30 @@ class LinkedList {
   }
   find(value) {
     //returns index of node containing value, or null if not found
+    let current = this.head;
+    if (current.value == value) return 0;
+    else {
+      let i = 0;
+      while (current.next) {
+        current = current.next;
+        i++;
+        if (current.value == value) return i;
+      }
+    }
+    return null;
   }
   toString() {
     //represents LinkedList objects as strings, printed to console
     // format: (value) -> (value) -> null
+    let string = "";
+    let current = this.head;
+    string += "(" + current.value + ") ->";
+    while (current.next) {
+      current = current.next;
+      string += "(" + current.value + ") -> ";
+    }
+    string += "null";
+    return string;
   }
 }
 let test = new LinkedList();
@@ -111,8 +130,12 @@ console.log(test.head);
 console.log(test.tail());
 console.log(test.at(1));
 test.pop();
-// console.log(test);
+console.log(test);
 test.append("test4");
 console.log(test);
-// console.log("test5?: " + test.contains("test5")); //false
-// console.log("test2?: " + test.contains("test2")); //true
+console.log("Contains test5?: " + test.contains("test5")); //false
+console.log("Contains test2?: " + test.contains("test2")); //true
+console.log("test4 at index:" + test.find("test4")); //2
+console.log("test1 at index:" + test.find("test1")); //null
+console.log("test3 at index:" + test.find("test3")); //0
+console.log(test.toString());
