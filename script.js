@@ -62,6 +62,11 @@ class LinkedList {
   }
   at(index) {
     //returns node at given index
+    let current = this.head;
+    for (let i = 1; i < index + 1; i++) {
+      current = current.next;
+    }
+    return current;
   }
   pop() {
     //removes last element from list
@@ -80,7 +85,9 @@ class LinkedList {
 let test = new LinkedList();
 test.append("test1");
 test.prepend("test2");
-console.log(test); // test2 -> test1
+test.prepend("test3");
+console.log(test); // test3 -> test2 -> test1
 console.log(test.size);
 console.log(test.head);
 console.log(test.tail());
+console.log(test.at(1));
