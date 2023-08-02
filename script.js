@@ -70,6 +70,14 @@ class LinkedList {
   }
   pop() {
     //removes last element from list
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.value = null;
+    // current.next = null;
+    // need to set previous next to null
+    this.size--;
   }
   contains(value) {
     //returns true if value is in the list, otherwise returns false
@@ -91,3 +99,7 @@ console.log(test.size);
 console.log(test.head);
 console.log(test.tail());
 console.log(test.at(1));
+test.pop();
+console.log(test);
+test.append("test4");
+console.log(test);
