@@ -42,12 +42,19 @@ class LinkedList {
   }
   size() {
     //return total number of nodes in list
+    return this.size;
   }
   head() {
     //returns first node of list
+    return this.head;
   }
   tail() {
     //returns last node of list
+    let current;
+    while (current.next) {
+      current = current.next;
+    }
+    return current;
   }
   at(index) {
     //returns node at given index
@@ -70,3 +77,6 @@ let test = new LinkedList();
 test.append("test1");
 test.prepend("test2");
 console.log(test); // test2 -> test1
+console.log(test.size);
+console.log(test.head);
+console.log(test.tail);
