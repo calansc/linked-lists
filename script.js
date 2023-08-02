@@ -71,11 +71,13 @@ class LinkedList {
   pop() {
     //removes last element from list
     let current = this.head;
+    let prev;
     while (current.next) {
+      prev = current;
       current = current.next;
     }
-    current.value = null;
-    // current.next = null;
+    prev.next = null;
+    // current.value = null;
     // need to set previous next to null
     this.size--;
   }
@@ -109,8 +111,8 @@ console.log(test.head);
 console.log(test.tail());
 console.log(test.at(1));
 test.pop();
-console.log(test);
+// console.log(test);
 test.append("test4");
 console.log(test);
-console.log("test5?: " + test.contains("test5")); //false
-console.log("test2?: " + test.contains("test2")); //true
+// console.log("test5?: " + test.contains("test5")); //false
+// console.log("test2?: " + test.contains("test2")); //true
