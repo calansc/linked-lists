@@ -81,6 +81,15 @@ class LinkedList {
   }
   contains(value) {
     //returns true if value is in the list, otherwise returns false
+    let current = this.head;
+    if (current.value == value) return true;
+    else {
+      while (current.next) {
+        current = current.next;
+        if (current.value == value) return true;
+      }
+    }
+    return false;
   }
   find(value) {
     //returns index of node containing value, or null if not found
@@ -103,3 +112,5 @@ test.pop();
 console.log(test);
 test.append("test4");
 console.log(test);
+console.log("test5?: " + test.contains("test5")); //false
+console.log("test2?: " + test.contains("test2")); //true
